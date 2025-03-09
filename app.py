@@ -59,20 +59,21 @@ user_input = np.array([[chest_pain, exercise_angina, diabetes, hypertension,
                         heart_disease, residence_type,
                         smoking_status, bp, cholesterol, max_hr]])
 
-# Scale input features
+if st.button("🔍 Predict"):
+    # Ensure feature count matches the model
+    if user_input.shape[1] == len(feature_names):
+        # Scale user input
+        user_input_scaled = scaler.transform(user_input)
+        
+        # Make Prediction
+        prediction = model.predict(user_input_scaled)[0]
+        probability = model.predict_proba(user_input_scaled)[0][1]  # Probability of high risk
 
-
-if user_input.shape[1] == len(feature_names):
-    user_input_scaled = scaler.transform(user_input)
-    prediction = model.predict(user_input_scaled)[0]
-    probability = model.predict_proba(user_input_scaled)[0][1]
-
-
-    st.subheader("Prediction Result")
-    if prediction == 1:
-        st.error(f"🚨 High Risk! Immediate Attention Needed! (Confidence: {probability:.2f})")
+        # Display Result
+        st.subheader("Prediction Result")
+        if prediction == 1:
+            st.error(f"🚨 High Risk! Immediate Attention Needed! (Confidence: {probability:.2f})")
+        else:
+            st.success(f"✅ Low Risk. No Immediate Danger. (Confidence: {1 - probability:.2f})")
     else:
-        st.success(f"✅ Low Risk. No Immediate Danger. (Confidence: {1-probability:.2f})")
-else:
-    st.error("Feature mismatch! Please check input values.")
-
+        st.error(f"Feature mismatch! Model expects {len(feature_names)} features, but received {user_input.shape[1]}.")
