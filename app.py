@@ -54,9 +54,9 @@ residence_type = 1 if residence_type == "Urban" else 0
 smoking_status = {"Never": 0, "Former": 1, "Current": 2}[smoking_status]
 
 # Collect user input as a NumPy array
-user_input = np.array([[age, gender, chest_pain, bp, cholesterol, max_hr, exercise_angina, 
-                        plasma_glucose, skin_thickness, insulin, bmi, diabetes, hypertension, 
-                        heart_disease, residence_type, smoking_status]])
+user_input = np.array([[chest_pain, exercise_angina, diabetes, hypertension, 
+                        heart_disease, residence_type,
+                        smoking_status bp, cholesterol, max_hr]])
 
 # Scale input features
 
