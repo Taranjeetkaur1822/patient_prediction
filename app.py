@@ -67,15 +67,12 @@ if user_input.shape[1] == len(feature_names):
     prediction = model.predict(user_input_scaled)[0]
     probability = model.predict_proba(user_input_scaled)[0][1]
 
-# Prediction
-if st.sidebar.button("Predict"):
-    prediction = model.predict(user_input_scaled)[0]
-    probability = model.predict_proba(user_input_scaled)[0][1]  # Probability of being high risk
 
     st.subheader("Prediction Result")
     if prediction == 1:
         st.error(f"🚨 High Risk! Immediate Attention Needed! (Confidence: {probability:.2f})")
     else:
         st.success(f"✅ Low Risk. No Immediate Danger. (Confidence: {1-probability:.2f})")
+else:
+    st.error("Feature mismatch! Please check input values.")
 
-st.sidebar.write("Adjust values and click **Predict** to see results.")
