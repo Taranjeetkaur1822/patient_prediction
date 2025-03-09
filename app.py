@@ -18,7 +18,7 @@ scaler = joblib.load("scaler.pkl")
 # Ensure the input feature order matches the trained scaler
 feature_names = ["chest_pain","exercise_angina","diabetes","hypertension", 
                  "heart_disease","residence_type", 
-                 "smoking_status" "bp", "cholesterol", "max_hr"
+                 "smoking_status", "bp", "cholesterol", "max_hr"
                   ]
 # Title
 st.title("🏥 Medical Risk Prediction App")
