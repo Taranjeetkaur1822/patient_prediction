@@ -16,10 +16,9 @@ model = joblib.load("logistic_regression.pkl")
 scaler = joblib.load("scaler.pkl")
 
 # Ensure the input feature order matches the trained scaler
-feature_names = ["age", "gender", "chest_pain", "bp", "cholesterol", "max_hr", 
-                 "exercise_angina", "plasma_glucose", "skin_thickness", "insulin", 
-                 "bmi", "diabetes", "hypertension", "heart_disease", "residence_type", 
-                 "smoking_status"]
+feature_names = ["chest_pain","exercise_angina","diabetes","hypertension", "heart_disease","residence_type", 
+                 "smoking_status" "bp", "cholesterol", "max_hr"
+                  ]
 # Title
 st.title("🏥 Medical Risk Prediction App")
 st.write("This app predicts whether a patient is at risk based on medical data.")
