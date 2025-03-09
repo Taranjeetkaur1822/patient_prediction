@@ -16,7 +16,8 @@ model = joblib.load("logistic_regression.pkl")
 scaler = joblib.load("scaler.pkl")
 
 # Ensure the input feature order matches the trained scaler
-feature_names = ["chest_pain","exercise_angina","diabetes","hypertension", "heart_disease","residence_type", 
+feature_names = ["chest_pain","exercise_angina","diabetes","hypertension", 
+                 "heart_disease","residence_type", 
                  "smoking_status" "bp", "cholesterol", "max_hr"
                   ]
 # Title
@@ -56,7 +57,7 @@ smoking_status = {"Never": 0, "Former": 1, "Current": 2}[smoking_status]
 # Collect user input as a NumPy array
 user_input = np.array([[chest_pain, exercise_angina, diabetes, hypertension, 
                         heart_disease, residence_type,
-                        smoking_status bp, cholesterol, max_hr]])
+                        smoking_status, bp, cholesterol, max_hr]])
 
 # Scale input features
 
