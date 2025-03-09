@@ -55,7 +55,12 @@ user_input = np.array([[age, gender, chest_pain_type, blood_pressure, cholestero
                         heart_disease, residence_type, smoking_status]])
 
 # Scale input features
-user_input_scaled = scaler.transform(user_input)
+
+
+if user_input.shape[1] == len(feature_names):
+    user_input_scaled = scaler.transform(user_input)
+    prediction = model.predict(user_input_scaled)[0]
+    probability = model.predict_proba(user_input_scaled)[0][1]
 
 # Prediction
 if st.sidebar.button("Predict"):
